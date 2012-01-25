@@ -1,6 +1,5 @@
 require 'money'
 require 'open-uri'
-require 'multi_json'
 
 class Money
   module Bank
@@ -61,8 +60,14 @@ class Money
       #   @bank.get_rate(:USD, :EUR)  #=> 0.776337241
       def get_rate(from, to)
         @mutex.synchronize{
-          @rates[rate_key_for(from, to)] ||= fetch_rate(from, to)
+          (@rates[rate_key_for(from, to)] ||= fetch_rate(from, to)).to_f
         }
+      end
+
+      ##
+      # Same as {GoogleCurrency#get_rate}
+      def self.get_rate(*args)
+        new.get_rate(*args)
       end
 
       private
@@ -113,7 +118,7 @@ class Money
         data.gsub!(/icc:/, '"icc":')
         data.gsub!(Regexp.new("(\\\\x..|\\\\240)"), '')
 
-        MultiJson.decode(data)
+        ActiveSupport::JSON.decode(data)
       end
 
       ##
