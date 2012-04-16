@@ -1,3 +1,8 @@
+Google Currency 2.0.3
+=====================
+
+Money >= 5 (dependency)
+
 Google Currency 2.0.2
 =====================
 

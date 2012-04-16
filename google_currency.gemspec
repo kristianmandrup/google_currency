@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "google_currency"
-  s.version     = "2.0.2"
+  s.version     = "2.0.3"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Shane Emmons"]
   s.email       = ["semmons99@gmail.com"]
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "yajl-ruby", ">= 1.0.0"
   s.add_development_dependency "ffi"
 
-  s.add_dependency "money", "~> 4"
+  s.add_dependency "money", ">= 5"
   s.add_dependency "activesupport"
 
   s.files =  Dir.glob("{lib,spec}/**/*")
